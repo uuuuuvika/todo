@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AnimatedCursor from "react-animated-cursor";
 
 const inFocus = (i) => {
   setTimeout(() => {
@@ -6,7 +7,7 @@ const inFocus = (i) => {
   }, 0);
 };
 
-const App = () => {
+export default function App() {
   const [todos, setTodos] = useState([
     {
       content: "What do you want to do?",
@@ -60,6 +61,14 @@ const App = () => {
 
   return (
     <div className="app">
+      <AnimatedCursor
+        innerSize={11}
+        outerSize={13}
+        color="255, 255, 0"
+        outerAlpha={0.2}
+        innerScale={0.7}
+        outerScale={5}
+      />
       <form className="todo-list">
         <ul>
           {todos.map((todo, i) => (
@@ -82,6 +91,4 @@ const App = () => {
       </form>
     </div>
   );
-};
-
-export default App;
+}
