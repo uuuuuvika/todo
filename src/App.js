@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AnimatedCursor from "react-animated-cursor";
+import BtnGroup from "./btn-group";
 
 const inFocus = (i) => {
   setTimeout(() => {
@@ -69,10 +70,13 @@ export default function App() {
         innerScale={0.7}
         outerScale={3}
       />
+
+      <BtnGroup />
+
       <form className="todo-list">
         <ul>
           {todos.map((todo, i) => (
-            <div className={`todo ${todo.isCompleted && "todo-is-completed"}`}>
+            <div className={`todo ${todo.isCompleted && "todo-is-completed"}`} key={i}>
               <div
                 className={"checkbox"}
                 onClick={() => toggleTodoCompleteAtIndex(i)}

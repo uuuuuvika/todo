@@ -3,6 +3,31 @@ body {
   min-height: 100vh;
 }
 
+/* Grey Worm theme */
+.greyWorm {
+  background-color: blue;
+}
+
+/* Blue Silence theme */
+.blueSilence {
+  background-color: #0a0f2b;
+}
+
+/* Soapy Marry Jane theme */
+.soapyMarryJane {
+  background-color: #102700;
+}
+
+/* Walk into Horizon theme */
+.walkIntoHorizon {
+  background-color: #4a0000;
+}
+
+/* Winter Saddness theme */
+.winterSaddness {
+  background-color: #083d77;
+}
+
 .app {
   padding-top: 12rem;
 }
@@ -12,7 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  /* color: white; */
 }
 
 .todo {
@@ -40,7 +65,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color .2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   border: 1px solid #fff;
 }
 
@@ -65,8 +90,42 @@ input {
   width: 100%;
 }
 
-@media (max-width: 1024px)  {
+.btn-group {
+  position: absolute;
+  margin-left: 88vw;
+  top: 38vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  border: none;
+  background: rgba(0, 0, 0, 0.09);
+  margin: 0.4rem;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  max-height: 5vh;
+}
+
+.btn span {
+  opacity: 0.3;
+}
+
+.btn span:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 1024px) {
   ul {
-    width: 88vw;
+    width: 80vw;
+  }
+  .btn-group {
+    margin-left: 77vw;
+  }
+  input {
+    font-size: 1rem;
   }
 }
