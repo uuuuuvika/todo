@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function App() {
+const inFocus = (i) => {
+  setTimeout(() => {
+    document.forms[0].elements[i].focus();
+  }, 0);
+};
 
+const App = () => {
   const [todos, setTodos] = useState([
     {
       content: "What do you want to do?",
@@ -9,7 +14,11 @@ function App() {
     },
   ]);
 
-  function handleKeyDown(e, i) {
+  useEffect(() => {
+    inFocus(0);
+  }, []);
+
+  const handleKeyDown = (e, i) => {
     if (e.key === "Enter") {
       createTodoAtIndex(e, i);
     }
@@ -17,42 +26,37 @@ function App() {
       e.preventDefault();
       return removeTodoAtIndex(i);
     }
-  }
+  };
 
-  function removeTodoAtIndex(i) {
+  const removeTodoAtIndex = (i) => {
     if (i === 0 && todos.length === 1) return;
     setTodos((todos) =>
       todos.slice(0, i).concat(todos.slice(i + 1, todos.length))
     );
-    setTimeout(() => {
-      document.forms[0].elements[i - 1].focus();
-    }, 0);
-  }
+    inFocus(i - 1);
+  };
 
-  function createTodoAtIndex(e, i) {
-  
+  const createTodoAtIndex = (e, i) => {
     const newTodos = [...todos];
     newTodos.splice(i + 1, 0, {
       content: "",
       isCompleted: false,
     });
     setTodos(newTodos);
-    setTimeout(() => {
-      document.forms[0].elements[i + 1].focus();
-    }, 0);
-  }
+    inFocus(i + 1);
+  };
 
-  function updateTodoAtIndex(e, i) {
+  const updateTodoAtIndex = (e, i) => {
     const newTodos = [...todos];
     newTodos[i].content = e.target.value;
     setTodos(newTodos);
-  }
+  };
 
-  function toggleTodoCompleteAtIndex(index) {
+  const toggleTodoCompleteAtIndex = (index) => {
     const temporaryTodos = [...todos];
     temporaryTodos[index].isCompleted = !temporaryTodos[index].isCompleted;
     setTodos(temporaryTodos);
-  }
+  };
 
   return (
     <div className="app">
@@ -78,6 +82,6 @@ function App() {
       </form>
     </div>
   );
-}
+};
 
 export default App;
