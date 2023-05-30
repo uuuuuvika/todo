@@ -2,11 +2,11 @@ import { useState } from "react";
 
 export default function BtnGroup() {
   const [themeBtn, setThemeBtn] = useState([
-    { iconCode: <>🐀</>, theme: "greyWorm" },
-    { iconCode: <>🐦‍⬛</>, theme: "blueSilence" },
-    { iconCode: <>🧿</>, theme: "winterSaddness" },
-    { iconCode: <>🌙</>, theme: "soapyMarryJane" },
-    { iconCode: <>⭕️</>, theme: "walkIntoHorizon" },
+    { iconCode: "x", theme: "greyWorm" },
+    { iconCode: "å", theme: "blueSilence" },
+    { iconCode: "ł", theme: "winterSaddness" },
+    { iconCode: "ø", theme: "soapyMarryJane" },
+    { iconCode: "ę", theme: "walkIntoHorizon" },
   ]);
 
   const changeTheme = (selectedTheme) => {

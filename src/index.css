@@ -25,7 +25,7 @@ body {
 
 /* Winter Saddness theme */
 .winterSaddness {
-  background-color: #083d77;
+  background-color: rgb(41, 0, 90);
 }
 
 .app {
@@ -66,6 +66,7 @@ body {
   justify-content: center;
   align-items: center;
   transition: background-color 0.2s ease-in-out;
+  background: rgba(0, 0, 0, 0.05);
   border: 1px solid #fff;
 }
 
@@ -102,20 +103,21 @@ input {
 
 .btn {
   border: none;
-  background: rgba(0, 0, 0, 0.09);
+  background: none;
   margin: 0.4rem;
   font-size: 1.6rem;
   border-radius: 50%;
   cursor: pointer;
   max-height: 5vh;
+  color: white;
 }
 
 .btn span {
-  opacity: 0.3;
+  opacity: 0.15;
 }
 
 .btn span:hover {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 @media (max-width: 1024px) {
