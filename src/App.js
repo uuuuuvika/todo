@@ -76,7 +76,10 @@ export default function App() {
       <form className="todo-list">
         <ul>
           {todos.map((todo, i) => (
-            <div className={`todo ${todo.isCompleted && "todo-is-completed"}`} key={i}>
+            <div
+              className={`todo ${todo.isCompleted && "todo-is-completed"}`}
+              key={i}
+            >
               <div
                 className={"checkbox"}
                 onClick={() => toggleTodoCompleteAtIndex(i)}
