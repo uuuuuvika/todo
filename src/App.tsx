@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import AnimatedCursor from "react-animated-cursor";
 import BtnGroup from "./btn-group";
 
-const inFocus = (i) => {
+const inFocus = (i: number): void => {
   setTimeout(() => {
-    document.forms[0].elements[i].focus();
+    (document.forms[0].elements[i] as HTMLElement).focus();
   }, 0);
 };
 
-export default function App() {
-  const [todos, setTodos] = useState([
+interface Todo {
+  content: string;
+  isCompleted: boolean;
+}
+
+
+export default function App(): JSX.Element {
+  const [todos, setTodos] = useState<Todo[]>([
     {
       content: "What do you want to do?",
       isCompleted: false,
@@ -19,8 +25,8 @@ export default function App() {
   useEffect(() => {
     inFocus(0);
   }, []);
-
-  const handleKeyDown = (e, i) => {
+  
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, i: number): void => {
     if (e.key === "Enter") {
       createTodoAtIndex(e, i);
     }
@@ -29,16 +35,16 @@ export default function App() {
       return removeTodoAtIndex(i);
     }
   };
-
-  const removeTodoAtIndex = (i) => {
+  
+  const removeTodoAtIndex = (i: number): void => {
     if (i === 0 && todos.length === 1) return;
-    setTodos((todos) =>
+    setTodos((todos: Todo[]) =>
       todos.slice(0, i).concat(todos.slice(i + 1, todos.length))
     );
     inFocus(i - 1);
   };
-
-  const createTodoAtIndex = (e, i) => {
+  
+  const createTodoAtIndex = (e: React.KeyboardEvent<HTMLInputElement>, i: number): void => {
     const newTodos = [...todos];
     newTodos.splice(i + 1, 0, {
       content: "",
@@ -47,14 +53,14 @@ export default function App() {
     setTodos(newTodos);
     inFocus(i + 1);
   };
-
-  const updateTodoAtIndex = (e, i) => {
+  
+  const updateTodoAtIndex = (e: React.ChangeEvent<HTMLInputElement>, i: number): void => {
     const newTodos = [...todos];
     newTodos[i].content = e.target.value;
     setTodos(newTodos);
   };
-
-  const toggleTodoCompleteAtIndex = (index) => {
+  
+  const toggleTodoCompleteAtIndex = (index: number): void => {
     const temporaryTodos = [...todos];
     temporaryTodos[index].isCompleted = !temporaryTodos[index].isCompleted;
     setTodos(temporaryTodos);
